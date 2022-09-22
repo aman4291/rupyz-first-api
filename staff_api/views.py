@@ -7,6 +7,21 @@ from staff_api.serializers import PublicListSerializer
 # Create your views here.
 
 
-class StaffData(generics.ListAPIView):
+class ListStaffData(generics.ListAPIView):
+    queryset = Staff.objects.all()
+    serializer_class = PublicListSerializer
+
+
+class CreateStaffData(generics.CreateAPIView):
+    queryset = Staff.objects.all()
+    serializer_class = PublicListSerializer
+
+
+class UpdateStaffData(generics.UpdateAPIView):
+    queryset = Staff.objects.all()
+    serializer_class = PublicListSerializer
+
+
+class DeleteStaffData(generics.DestroyAPIView):
     queryset = Staff.objects.all()
     serializer_class = PublicListSerializer
