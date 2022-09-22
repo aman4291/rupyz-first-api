@@ -1,21 +1,32 @@
 from rest_framework.serializers import ModelSerializer
+
 from staff_api.models import Staff
 
 
-class PublicListSerializer(ModelSerializer):
-    """
-    Basic Details for Public API Listing.
-    """
+class CreateStaffSerializer(ModelSerializer):
 
     class Meta:
         model = Staff
-        fields = ["name",
-                  "mobile",
-                  "email_id",
-                  "address_line_1",
-                  "address_line_2",
-                  "city",
-                  "pincode",
-                  "state",
-                  ]
-        read_only_fields = ("__all__",)
+        fields = "__all__"
+
+
+class ListStaffSerializer(ModelSerializer):
+
+    class Meta:
+        model = Staff
+        fields = [
+            "id",
+            "name",
+            "mobile",
+            "email",
+            "city",
+            "created_at",
+        ]
+
+
+class DetailOrUpdateStaffSerializer(ModelSerializer):
+
+    class Meta:
+        model = Staff
+        fields = "__all__"
+        read_only_fields = ["id", ]

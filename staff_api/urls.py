@@ -1,11 +1,9 @@
 from django.urls import path
 
-from staff_api.views import ListStaffData, CreateStaffData, UpdateStaffData, DeleteStaffData
-
+from staff_api.views import DetailAndUpdateAPIView, ListAndCreateStaffAPIView, DeleteStaffAPIView
 
 urlpatterns = [
-    path('staff/', ListStaffData.as_view()),
-    path('create/', CreateStaffData.as_view()),
-    path('update/', UpdateStaffData.as_view()),
-    path('delete/', DeleteStaffData.as_view()),
+    path('', ListAndCreateStaffAPIView.as_view()),
+    path('<int:pk>/', DetailAndUpdateAPIView.as_view()),
+    path('<int:pk>/delete/', DeleteStaffAPIView.as_view()),
 ]
